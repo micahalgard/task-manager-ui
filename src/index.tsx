@@ -1,15 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import { CompletedTasks } from './pages/CompletedTasks/CompletedTasks';
+import { About } from './pages/About/About';
+import { TodoTasks } from './pages/TodoTasks/TodoTasks';
+import { TaskProvider } from './hooks/tasks';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <TodoTasks />,
+  },
+  {
+    path: "/completedTasks",
+    element: <CompletedTasks />
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <TaskProvider>
+      <RouterProvider router={router} />
+    </TaskProvider>
   </React.StrictMode>
 );
 
