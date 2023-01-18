@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Link } from 'react-router-dom';
-import { MenuItem } from '@mui/material';
+import * as React from 'react'
+import { styled, useTheme } from '@mui/material/styles'
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import CssBaseline from '@mui/material/CssBaseline'
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import List from '@mui/material/List'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import { Link } from 'react-router-dom'
+import { MenuItem } from '@mui/material'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
-  open?: boolean;
+  open?: boolean
 }>(({ theme, open }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
@@ -34,10 +34,10 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
     }),
     marginLeft: 0,
   }),
-}));
+}))
 
 interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
+  open?: boolean
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -55,7 +55,7 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
-}));
+}))
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -64,37 +64,36 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
-}));
+}))
 
 interface NavigationProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode
   title?: string
 }
-export const Navigation = ({ children, title } : NavigationProps ) => {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+export const Navigation = ({ children, title }: NavigationProps) => {
+  const theme = useTheme()
+  const [open, setOpen] = React.useState(false)
 
   const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
+    setOpen(false)
+  }
 
   const menuItems = [
     {
-      link: "/",
-      text: "Tasks"
+      link: '/',
+      text: 'Tasks',
     },
     {
-      link: "/completedTasks",
-      text: "Completed Tasks"
+      link: '/completedTasks',
+      text: 'Completed Tasks',
     },
     {
-      link: "/about",
-      text: "About"
+      link: '/about',
+      text: 'About',
     },
   ]
 
@@ -138,9 +137,9 @@ export const Navigation = ({ children, title } : NavigationProps ) => {
         <Divider />
         <List>
           {menuItems.map((item, index) => (
-              <MenuItem component={Link} to={item.link} key={index}>
-                {item.text}
-              </MenuItem>
+            <MenuItem component={Link} to={item.link} key={index}>
+              {item.text}
+            </MenuItem>
           ))}
         </List>
       </Drawer>
@@ -149,5 +148,5 @@ export const Navigation = ({ children, title } : NavigationProps ) => {
         {children}
       </Main>
     </Box>
-  );
+  )
 }
